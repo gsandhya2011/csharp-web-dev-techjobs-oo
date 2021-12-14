@@ -51,5 +51,22 @@ namespace TechJobsTests
             Job testJob2 = new Job("Sandhya", new Employer("emp"), new Location("loc"), new PositionType("pos"), new CoreCompetency("smart"));
             Assert.AreNotEqual(testJob1, testJob2);
         }
+
+        [TestMethod]
+        public void TestJobsToString()
+        {
+            Assert.IsTrue(testJob1.ToString().Contains($"ID: " + testJob1.Id));
+            Assert.IsTrue(testJob1.ToString().Contains($"Name: " + testJob1.Name));
+            Assert.IsTrue(testJob1.ToString().Contains($"Employer: " + testJob1.EmployerName.Value));
+            Assert.IsTrue(testJob1.ToString().Contains($"Location: " + testJob1.EmployerLocation.Value));
+            Assert.IsTrue(testJob1.ToString().Contains($"Position Type: " + testJob1.JobType.Value));
+            Assert.IsTrue(testJob1.ToString().Contains($"Core Competency: " + testJob1.JobCoreCompetency.Value));
+
+            Job jobToStringTest2 = new Job("", acme, desert, qa, persistence);
+            Assert.IsTrue(jobToStringTest2.ToString().Contains($"Name: Data not avaliable"));
+
+            Job jobToStringTest3 = new Job();
+            Assert.AreEqual(jobToStringTest3.ToString(), "OOPS! This job does not seem to exist.");
+        }
     }
 }
