@@ -17,7 +17,7 @@ namespace TechJobsOO
 
         public Location(string value) : this()
         {
-            Value = value;
+            Value = value;  
         }
         public override bool Equals(object obj)
         {
